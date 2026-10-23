@@ -8,6 +8,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
@@ -49,13 +51,13 @@ fun DriversScreen(navController: NavController) {
 
         // title text
         Text(
-            text = "Drivers",
+            text = "FormulaZero Drivers",
             fontSize = 30.sp
         )
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // text field and button to add race locations
+        // text field and button to add drivers
         Row (
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween
@@ -66,9 +68,10 @@ fun DriversScreen(navController: NavController) {
                     driver = it // update location to new value
                 },
                 label = {
-                    Text("Race Location")
+                    Text("Driver")
                 },
-                modifier = Modifier.testTag("driverInput") // for testing
+                modifier = Modifier.testTag("driverInput")
+                    .width(200.dp)// for testing
             )
 
             Spacer(modifier = Modifier.height(8.dp))
@@ -85,24 +88,29 @@ fun DriversScreen(navController: NavController) {
                 Text("Add")
             }
 
+            Spacer(modifier = Modifier.height(8.dp))
+
             Button(
                 onClick = {
                     drivers.clear()
                 },
                 modifier = Modifier.testTag("clearDriversButton") // for testing
             ) {
-                Text("Clear Drivers")
+                Text("Clear")
             }
         }
 
-        // list to display races
-        LazyColumn {
+        // list to display drivers
+        LazyColumn (
+
+        ) {
             items(drivers) { driver ->
                 Spacer(modifier = Modifier.height(12.dp))
 
                 Text(
                     text = driver,
-                    fontSize = 24.sp
+                    fontSize = 24.sp,
+                    modifier = Modifier.testTag("driverText")
                 )
             }
         }

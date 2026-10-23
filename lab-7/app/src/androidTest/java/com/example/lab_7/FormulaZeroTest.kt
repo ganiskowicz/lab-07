@@ -62,7 +62,7 @@ class FormulaZeroTest {
 
         // verify drivers screen
         composeTestRule
-            .onNodeWithText("Drivers")
+            .onNodeWithText("FormulaZero Drivers")
             .assertExists()
 
         // enter driver
@@ -85,9 +85,9 @@ class FormulaZeroTest {
             .onNodeWithTag("clearDriversButton")
             .performClick()
 
-        // verify driver appears
+        // verify drivers are gone
         composeTestRule
-            .onNodeWithText("Max Verstappen")
+            .onNodeWithTag("driverText")
             .assertDoesNotExist()
 
         // return to home screen
